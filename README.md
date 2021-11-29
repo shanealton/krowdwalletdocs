@@ -56,3 +56,13 @@ To sign and compress the pass, use the signpass tool to sign the pass package. I
 These commands create a signed and compressed pass named pass-name.pkpass in the Documents folder. If the signpass command fails, make sure you are using your correct pass type identifier and check that the pass.json file contains valid JSON.
 
 **You now have to signed and compressed pass inside of your Documents directory. It will have an extension of** ``.pkpass``.
+
+## Distributing Passes:
+
+***
+
+After you have created a signed, compressed pass bundle, getting it into Wallet is easy. Mail and Safari support passes in iOS 6 and later and in macOS v10.8.2 and later, so you can use them to distribute passes by email or from a website. In iOS, they add passes to the pass library directly. In macOS, they use iCloud to add passes to the user’s iOS devices.
+
+**To deliver a pass to the customer via email, simply send the signed pass as an attachment.**
+
+>Mail and Safari expect passes to use the application/vnd.apple.pkpass MIME type. Configure your >email creation system or web server to use this MIME type for pass data.
