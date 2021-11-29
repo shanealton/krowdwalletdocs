@@ -5,6 +5,8 @@
 
 ## Create a new pass package:
 
+***
+
 **To create a pass package for your new pass, do the following:**
 
 1.  Make a new directory in the Documents folder called pass-name.pass. Using the .pass extension is a best practice, showing that the directory is a pass package.  
@@ -12,6 +14,8 @@
 2.  Open the Pass-Framework.pass directory and copy/paste the default file structure to the new .pass directory to setup the framework for the new pass.
 
 ## **Setting the Pass Type Identifier and Team ID:**
+
+***
 
 Every pass has a pass type identifier associated with a developer account. Pass type identifiers are managed in Member Center by a team admin.
 
@@ -41,6 +45,8 @@ Every pass has a pass type identifier associated with a developer account. Pass 
     The pass type identifier appears in the certificate under the User ID section.
 
 ## **Signing and Compressing the Pass:**
+
+***
 
 To sign and compress the pass, use the signpass tool to sign the pass package. In Terminal, run the following commands:
 
