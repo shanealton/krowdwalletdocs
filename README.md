@@ -44,7 +44,7 @@ Every pass has a pass type identifier associated with a developer account. Pass 
 
 To sign and compress the pass, use the signpass tool to sign the pass package. In Terminal, run the following commands:
 
-``cd ~/Documents``
+``cd ~/Documents``<br>
 ``./signpass -p pass-name.pass``
 
 These commands create a signed and compressed pass named pass-name.pkpass in the Documents folder. If the signpass command fails, make sure you are using your correct pass type identifier and check that the pass.json file contains valid JSON.
