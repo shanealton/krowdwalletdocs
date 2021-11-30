@@ -65,30 +65,6 @@ These commands create a signed and compressed pass named pass-name.pkpass in the
 
 <br/>
 
-## Distributing Passes:
-
-***
-
-After you have created a signed, compressed pass bundle, getting it into Wallet is easy. Mail and Safari support passes in iOS 6 and later and in macOS v10.8.2 and later, so you can use them to distribute passes by email or from a website. In iOS, they add passes to the pass library directly. In macOS, they use iCloud to add passes to the user’s iOS devices.
-
-<br/>
-
-### Distribute using Email:
-
-***
-
-**To deliver a pass to the customer via email, simply send the signed pass as an attachment.**
-
->Mail and Safari expect passes to use the application/vnd.apple.pkpass MIME type. Configure your email creation system or web server to use this MIME type for pass data.
-
-<br/>
-
-### Distribute using Web Service API:
-
-***
-
-You can also distribute passes using a link if you are hosting your passes on a web server.
-
 ## Designing passes (Pass styles):
 
 ***
@@ -182,3 +158,29 @@ You can declare the values you would like to display on the loyalty card as an o
 >Layout of a storeCard pass:
 
 ![StoreCard Pass](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/PassKit_PG/Art/store_card_2x.png)
+
+<br/>
+
+## Distributing Passes:
+
+***
+
+After you have created a signed, compressed pass bundle, getting it into Wallet is easy. Mail and Safari support passes in iOS 6 and later and in macOS v10.8.2 and later, so you can use them to distribute passes by email or from a website. In iOS, they add passes to the pass library directly. In macOS, they use iCloud to add passes to the user’s iOS devices.
+
+<br/>
+
+### Distribute using Email:
+
+***
+
+**To deliver a pass to the customer via email, simply send the signed pass as an attachment.**
+
+>Mail and Safari expect passes to use the application/vnd.apple.pkpass MIME type. Configure your email creation system or web server to use this MIME type for pass data.
+
+<br/>
+
+### Distribute using Web Service API:
+
+***
+
+You can also distribute passes using a link if you are hosting your passes on a web server.
