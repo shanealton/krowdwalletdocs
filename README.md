@@ -66,3 +66,77 @@ After you have created a signed, compressed pass bundle, getting it into Wallet 
 **To deliver a pass to the customer via email, simply send the signed pass as an attachment.**
 
 >Mail and Safari expect passes to use the application/vnd.apple.pkpass MIME type. Configure your email creation system or web server to use this MIME type for pass data.
+
+## Designing passes:
+
+***
+
+You specify the pass style by providing the corresponding key at the top level of the  ``pass.json``  file:
+
+-   Coupons use the key  ``coupon``. This pass style is appropriate for coupons, special offers, and other discounts.
+
+-   Store cards use the key  ``storeCard``. This pass style is appropriate for store loyalty cards, discount cards, points cards, and gift cards. Typically, a store identifies an account the user has with your company that can be used to make payments or receive discounts. When the account carries a balance, show the current balance on the pass.
+
+The value of the pass style key is a dictionary containing the fields that hold the pass content.
+
+### Coupons:
+
+***
+
+You can declare the values you would like to display on the coupon as an object  inside of the ``coupon`` key in your ``pass.json`` file.
+
+```
+	"coupon" : {
+		"primaryFields" : [{
+			"key" : "offer",
+			"label" : "One free item.",
+			"value" : "100% off"
+		}]
+	}
+```
+
+If you want to add secondary information you can use the field dictionaries ``secondaryFields`` , ``auxiliaryFields``, ``header`` and ``barcode``.  *As seen below.*
+
+```
+	"coupon" : {
+		"primaryFields" : [{
+			"key" : "offer",
+			"label" : "One free item.",
+			"value" : "100% off"
+		}],
+		"secondaryFields" : [{
+			"key" : "",
+			"label" : "",
+			"value" : ""
+		}],
+		"auxiliaryFields" : [{
+			"key" : "",
+			"label" : "",
+			"value" : ""
+		}]
+	}
+```
+
+> Layout of a coupon pass:
+
+![Coupon Pass](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/PassKit_PG/Art/coupon_2x.png)
+
+### Store Cards:
+
+---
+
+You can declare the values you would like to display on the loyalty card as an object inside of the ``storeCard`` key in your ``pass.json`` file.
+
+```
+	"storeCard" : {
+		"primaryFields" : [{
+			"key" : "name",
+			"label" : "Name",
+			"value" : "Shane Alton"
+		}]
+	}
+```
+
+>Layout of a storeCard pass:
+
+![StoreCard Pass](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/PassKit_PG/Art/store_card_2x.png)
