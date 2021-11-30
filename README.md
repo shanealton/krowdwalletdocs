@@ -71,13 +71,25 @@ These commands create a signed and compressed pass named pass-name.pkpass in the
 
 After you have created a signed, compressed pass bundle, getting it into Wallet is easy. Mail and Safari support passes in iOS 6 and later and in macOS v10.8.2 and later, so you can use them to distribute passes by email or from a website. In iOS, they add passes to the pass library directly. In macOS, they use iCloud to add passes to the user’s iOS devices.
 
+<br/>
+
+### Distribute using Email:
+
+***
+
 **To deliver a pass to the customer via email, simply send the signed pass as an attachment.**
 
 >Mail and Safari expect passes to use the application/vnd.apple.pkpass MIME type. Configure your email creation system or web server to use this MIME type for pass data.
 
 <br/>
 
-## Designing passes:
+### Distribute using Web Service API:
+
+***
+
+You can also distribute passes using a link if you are hosting your passes on a web server.
+
+## Designing passes (Pass styles):
 
 ***
 
@@ -88,6 +100,16 @@ You specify the pass style by providing the corresponding key at the top level o
 -   Store cards use the key  ``storeCard``. This pass style is appropriate for store loyalty cards, discount cards, points cards, and gift cards. Typically, a store identifies an account the user has with your company that can be used to make payments or receive discounts. When the account carries a balance, show the current balance on the pass.
 
 The value of the pass style key is a dictionary containing the fields that hold the pass content.
+
+<br/>
+
+The pass style determines the maximum number of fields that can appear on the front of a pass:
+
+In general, a pass can have up to three header fields, a single primary field, up to four secondary fields, and up to four auxiliary fields.
+
+``coupons``, ``storeCard``, and ``generic`` passes with a square barcode can have a total of up to four secondary and auxiliary fields, combined.
+
+The number of fields displayed on the pass also depends on the length of the text in each field. If there is too much text, some fields may not be displayed.
 
 <br/>
 
@@ -107,7 +129,9 @@ You can declare the values you would like to display on the coupon as an object 
 	}
 ```
 
-If you want to add secondary information you can use the field dictionaries ``secondaryFields`` , ``auxiliaryFields``, ``header`` and ``barcode``.  *As seen below.*
+If you want to add secondary information you can use the field dictionaries ``secondaryFields`` , ``auxiliaryFields`` and ``barcode``.  *As seen below.*
+
+If you need to show information on the back of the pass, these fields have a sibling called ``backFields``.
 
 ```
 	"coupon" : {
@@ -128,6 +152,8 @@ If you want to add secondary information you can use the field dictionaries ``se
 		}]
 	}
 ```
+
+<br/>
 
 > Layout of a coupon pass:
 
@@ -150,6 +176,8 @@ You can declare the values you would like to display on the loyalty card as an o
 		}]
 	}
 ```
+
+<br/>
 
 >Layout of a storeCard pass:
 
