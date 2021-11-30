@@ -32,6 +32,20 @@
         "label" : "Points",
         "value" : "300"
       }
+    ],
+    "secondaryFields" : [
+      {
+        "key" : "currentBalance",
+        "label" : "Points",
+        "value" : "300"
+      }
+    ],
+    "auxiliaryFields" : [
+      {
+        "key" : "",
+        "label" : "",
+        "value" : ""
+      }
     ]
   }
 }
