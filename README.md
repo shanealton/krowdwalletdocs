@@ -3,6 +3,8 @@
 > This is documentation for setting up and editing passes for Apple     
 > Wallet.
 
+<br/>
+
 ## Create a new pass package:
 
 ***
@@ -12,6 +14,8 @@
 1.  Make a new directory in the Documents folder called pass-name.pass. Using the .pass extension is a best practice, showing that the directory is a pass package.  
 
 2.  Open the Pass-Framework.pass directory and copy/paste the default file structure to the new .pass directory to setup the framework for the new pass.
+
+<br/>
 
 ## **Setting the Pass Type Identifier and Team ID:**
 
@@ -44,6 +48,8 @@ Every pass has a pass type identifier associated with a developer account. Pass 
 2.  Select File > Get Info, and find the Organizational Unit section under Details. This is your Team ID.  
     The pass type identifier appears in the certificate under the User ID section.
 
+<br/>
+
 ## **Signing and Compressing the Pass:**
 
 ***
@@ -57,6 +63,8 @@ These commands create a signed and compressed pass named pass-name.pkpass in the
 
 **You now have to signed and compressed pass inside of your Documents directory. It will have an extension of** ``.pkpass``.
 
+<br/>
+
 ## Distributing Passes:
 
 ***
@@ -66,6 +74,8 @@ After you have created a signed, compressed pass bundle, getting it into Wallet 
 **To deliver a pass to the customer via email, simply send the signed pass as an attachment.**
 
 >Mail and Safari expect passes to use the application/vnd.apple.pkpass MIME type. Configure your email creation system or web server to use this MIME type for pass data.
+
+<br/>
 
 ## Designing passes:
 
@@ -78,6 +88,8 @@ You specify the pass style by providing the corresponding key at the top level o
 -   Store cards use the key  ``storeCard``. This pass style is appropriate for store loyalty cards, discount cards, points cards, and gift cards. Typically, a store identifies an account the user has with your company that can be used to make payments or receive discounts. When the account carries a balance, show the current balance on the pass.
 
 The value of the pass style key is a dictionary containing the fields that hold the pass content.
+
+<br/>
 
 ### Coupons:
 
@@ -120,6 +132,8 @@ If you want to add secondary information you can use the field dictionaries ``se
 > Layout of a coupon pass:
 
 ![Coupon Pass](https://developer.apple.com/library/archive/documentation/UserExperience/Conceptual/PassKit_PG/Art/coupon_2x.png)
+
+<br/>
 
 ### Store Cards:
 
