@@ -65,4 +65,4 @@ After you have created a signed, compressed pass bundle, getting it into Wallet 
 
 **To deliver a pass to the customer via email, simply send the signed pass as an attachment.**
 
->Mail and Safari expect passes to use the application/vnd.apple.pkpass MIME type. Configure your >email creation system or web server to use this MIME type for pass data.
+>Mail and Safari expect passes to use the application/vnd.apple.pkpass MIME type. Configure your email creation system or web server to use this MIME type for pass data.
