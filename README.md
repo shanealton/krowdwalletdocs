@@ -179,8 +179,88 @@ After you have created a signed, compressed pass bundle, getting it into Wallet 
 
 <br/>
 
-### Distribute using Web Service API:
+## Distribute using Web Service API:
 
 ***
 
-You can also distribute passes using a link if you are hosting your passes on a web server.
+### Using the Web Service API:
+
+This is a demo implementation for the Passbook web service api.
+This document is broken up into three main sections:
+ - How to get setup with this implementation
+ - Sending push notifications
+
+### Getting Started
+You will need a handful of external resources to get this demo up and running.
+
+# Certificate
+Download or create your **Pass Type ID** certificate inside of your Apple Developer Account.
+
+After adding this certificate to your keychain, open the keychain access application, navigate to **'My Certificates'**, click on the arrow next to your certificate and export both the certificate and key as a .p12 file.
+
+Place the newly exported p.12 file inside of ``data/Certificate/anythingYouWant.p12``. Make sure to remember the password you choose as it will be needed when signing new passes.
+
+# Hostname
+Before we setup a production environment, your server and devices will need to be on the same network. The server
+will need a static IP, domain name or Bonjour name.
+
+# Xcode
+Xcode and the Xcode Command Line Tools are both required to compile
+the ruby gems listed in the next section.
+
+[Download Xcode](https://apps.apple.com/us/app/xcode/id497799835?mt=12)
+[Install Xcode Command Line Tools](https://macpaw.com/how-to/install-command-line-tools)
+
+# Gems
+This demo depends on the following external gems:
+ - sinatra
+ - rack
+ - sequel
+ - sqlite3
+ - yaml
+ - json
+ - sign_pass
+ - rubyzip
+
+Use the following commands to install the gems
+``$> sudo gem install sinatra sequel sqlite3 rubyzip rack yaml json terminal-table``
+
+Make sure you are in the pass_server directory before running the following command.
+``$> sudo gem install lib/sign_pass-0.1.7.gem``
+
+# Setting up the reference server
+
+For now, the setup of the server is hardcoded. In production you will enter the hostname and passtypeID when setting up the new server.
+
+The reference server setup script will guide you through setting up the reference server.
+Please have handy your hostname and the passTypeIdentifier of your pass.
+To run the script type:
+
+``$> lib/pass_server_ctl -s``
+
+This will create the database file, the tables needed.
+
+# Starting the server
+To start the server run the following command from inside the root folder of the demo:
+
+``$> rackup -p 4567``
+
+# Initially Downloading the pass
+The pass can be initially downloaded from the following URL on a device or from a
+computer and emailed to a device. Note that this url does not conform to the API and lack  
+security and authentication controls. This URL is for development purposes only.
+
+http://localhost:4567/pass.pkpass
+
+As you create new users and passes they will be placed in directories inside of /pass_server/data/passes
+
+``$> lib/pass_server_ctl -a serial_number,authentication_token,pass_type_id``
+
+### Sending push notifications
+A push notification script is included in the lid directory. Use the curl commands below to
+register a device then run the script with the following command, note that you will be prompted
+for your certificate's password.
+
+``$> lib/pass_server_ctl -n``
+
+This will use the database and send out push notifications to the devices for all registrations in the database.
