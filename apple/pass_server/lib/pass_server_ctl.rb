@@ -20,13 +20,14 @@ require File.dirname(File.expand_path(__FILE__)) + '/apns.rb'
 
 
 class ReferenceServerSetup
-  attr_accessor :db, :db_file, :hostname, :port, :pass_type_identifier
+  attr_accessor :db, :db_file, :hostname, :port, :pass_type_identifier, :team_identifier
 
   def initialize
     self.db_file =  File.dirname(File.expand_path(__FILE__)) + "/../data/pass_server.sqlite3"
     self.hostname = "127.0.0.1"
     self.port = 4567
-    self.pass_type_identifier = "PASS_TYPE_ID"
+    self.pass_type_identifier = ENV['PASS_TYPE_ID']
+    self.team_identifier = ENV['TEAM_ID']
   end
 
   def setup_hostname
@@ -46,7 +47,12 @@ class ReferenceServerSetup
 
   def setup_pass_type_identifier
     # self.pass_type_identifier = collect_user_input("Please enter the passTypeIdentifer associated with your certificate:", "", "The passTypeIdentifer is set to %@")
-    self.pass_type_identifier = "PASS_TYPE_ID"
+    self.pass_type_identifier = ENV['PASS_TYPE_ID']
+  end
+
+  def setup_team_identifier
+    #self.team_identifier = collect_user_input("Please enter the team ident associatied with your certificate:", "", "The team identifier is set to %@")
+    self.team_identifier = ENV['TEAM_ID']
   end
 
   def get_certificate_path
@@ -145,7 +151,7 @@ class ReferenceServerSetup
   def add_pass_for_user(user_id)
     serial_number = SecureRandom.hex
     authentication_token = SecureRandom.hex
-    add_pass(serial_number, authentication_token, "PASS_TYPE_ID", user_id)
+    add_pass(serial_number, authentication_token, pass_type_id, user_id)
   end
 
   def add_pass(serial_number, authentication_token, pass_type_id, user_id)
