@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: centos-latest
+    runs-on: ubuntu-latest
     steps:
       - name: Deploy Ruby App
         uses: appleboy/ssh-action@v0.1.2
