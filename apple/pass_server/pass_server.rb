@@ -440,7 +440,7 @@ class PassServer < Sinatra::Base
     pass_json["teamIdentifier"] = settings.team_identifier
     pass_json["serialNumber"] = pass[:serial_number]
     pass_json["authenticationToken"] = pass[:authentication_token]
-    pass_json["webServiceURL"] = "http://#{settings.hostname}:#{settings.port}/"
+    pass_json["webServiceURL"] = "https://#{settings.hostname}:#{settings.port}/"
     pass_json["barcode"]["message"] = barcode_string_for_pass(pass)
     pass_json["storeCard"]["primaryFields"][0]["value"] = user[:account_balance]
     pass_json["storeCard"]["secondaryFields"][0]["value"] = user[:name]

@@ -31,18 +31,15 @@ class ReferenceServerSetup
   end
 
   def setup_hostname
-    # json_ip = open('http://jsonip.com'){|f| JSON.parse(f.read)}
-    # hostname = collect_user_input("Please enter the hostname or ip address for the server [%@]:", json_ip["ip"], "The hostname is set to %@")
-    # self.hostname = hostname
-    self.hostname = "127.0.0.1"
+    json_ip = URI.open('https://jsonip.com'){|f| JSON.parse(f.read)}
+    hostname = collect_user_input("Please enter the hostname or ip address for the server [%@]:", json_ip["ip"], "The hostname is set to %@")
+    self.hostname = hostname
   end
 
   def setup_webserver_port
-    # default_port = 4567
-    # port = collect_user_input("Please enter a port to use for the webserver [%@]:", default_port, "The webserver port it set to %@")
-    # self.port = port
-
-    self.port = 4567
+    default_port = 4567
+    port = collect_user_input("Please enter a port to use for the webserver [%@]:", default_port, "The webserver port it set to %@")
+    self.port = port
   end
 
   def setup_pass_type_identifier
@@ -192,7 +189,7 @@ class ReferenceServerSetup
     pass_json["passTypeIdentifier"] = self.pass_type_identifier
     pass_json["serialNumber"] = pass[:serial_number]
     pass_json["authenticationToken"] = pass[:authentication_token]
-    pass_json["webServiceURL"] = "http://#{self.hostname}:#{self.port}/"
+    pass_json["webServiceURL"] = "https://#{self.hostname}:#{self.port}/"
     pass_json["barcode"]["message"] = pass[:serial_number]
     pass_json["storeCard"]["primaryFields"][0]["value"] = user[:account_balance]
     pass_json["storeCard"]["secondaryFields"][0]["value"] = user[:name]
