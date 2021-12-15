@@ -15,6 +15,7 @@ jobs:
           username: ${{secrets.SSH_USERNAME}} # User of the server you wish to login to.
 
           script: |
-            cd ~
+            mkdir krowd
+            cd krowd
             git clone git@github.com:shanealton/krowdwalletdocs.git
             echo 'Deployment successful to Digital Ocean Droplet!'
