@@ -6,7 +6,7 @@ require './pass_server'
 use Rack::MethodOverride
 
 # Pass Server Settings
-PassServer.set :hostname, "127.0.0.1"
+PassServer.set :hostname, "104.131.28.86"
 PassServer.set :port, 4567
 PassServer.set :pass_type_identifier, ENV["PASS_TYPE_ID"]
 PassServer.set :team_identifier, ENV["TEAM_ID"]
