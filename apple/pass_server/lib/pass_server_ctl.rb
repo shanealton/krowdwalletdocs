@@ -53,7 +53,7 @@ class ReferenceServerSetup
   end
 
   def get_certificate_path
-    certDirectory = File.dirname(File.expand_path(__FILE__)) + "/../Data/Certificate"
+    certDirectory = File.dirname(File.expand_path(__FILE__)) + "/../data/Certificate"
     certs = Dir.glob("#{certDirectory}/*.p12")
     if  certs.count ==0
       puts "Couldn't find a certificate at #{certDirectory}"
