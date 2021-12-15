@@ -16,5 +16,5 @@ jobs:
 
           script: |
             cd krowd/krowdwalletdocs
-            git pull
+            git pull --ff-only
             echo 'Deployment successful to Digital Ocean Droplet!'
