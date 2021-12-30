@@ -24,8 +24,8 @@ class ReferenceServerSetup
 
   def initialize
     self.db_file =  File.dirname(File.expand_path(__FILE__)) + "/../data/pass_server.sqlite3"
-    self.hostname = "127.0.0.1"
-    self.port = 4567
+    self.hostname = "138.197.97.125"
+    self.port = 80
     self.pass_type_identifier = ENV['PASS_TYPE_ID']
     self.team_identifier = ENV['TEAM_ID']
   end
