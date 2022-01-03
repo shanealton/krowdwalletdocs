@@ -148,7 +148,7 @@ class ReferenceServerSetup
   def add_pass_for_user(user_id)
     serial_number = SecureRandom.hex
     authentication_token = SecureRandom.hex
-    add_pass(serial_number, authentication_token, pass_type_id, user_id)
+    add_pass(serial_number, authentication_token, ENV["PASS_TYPE_ID"], user_id)
   end
 
   def add_pass(serial_number, authentication_token, pass_type_id, user_id)
