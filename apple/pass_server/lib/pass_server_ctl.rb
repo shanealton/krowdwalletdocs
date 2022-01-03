@@ -148,14 +148,14 @@ class ReferenceServerSetup
   def add_pass_for_user(user_id)
     serial_number = SecureRandom.hex
     authentication_token = SecureRandom.hex
-    add_pass(serial_number, authentication_token, pass_type_identifier, user_id)
+    add_pass(serial_number, authentication_token, pass_type_id, user_id)
   end
 
-  def add_pass(serial_number, authentication_token, pass_type_identifier, user_id)
+  def add_pass(serial_number, authentication_token, pass_type_id, user_id)
     passes = self.db[:passes]
     now = DateTime.now
-    passes.insert(:serial_number => serial_number, :authentication_token => authentication_token, :pass_type_identifier => pass_type_identifier, :user_id => user_id, :created_at => now, :updated_at => now)
-    puts "<#Pass serial_number: #{serial_number} authentication_token: #{authentication_token} pass_type_identifier: #{pass_type_identifier} user_id: #{user_id}>"
+    passes.insert(:serial_number => serial_number, :authentication_token => authentication_token, :pass_type_id => pass_type_id, :user_id => user_id, :created_at => now, :updated_at => now)
+    puts "<#Pass serial_number: #{serial_number} authentication_token: #{authentication_token} pass_type_id: #{pass_type_id} user_id: #{user_id}>"
   end
 
   def delete_pass(pass_id)
