@@ -462,7 +462,7 @@ class PassServer < Sinatra::Base
     end
 
     # Generate and sign the new pass
-    pass_signer = SignPass.new(pass_folder_path, pass_signing_certificate_path, settings.certificate_password, wwdr_certificate_path, pass_output_path)
+    pass_signer = SignPass.new(pass_folder_path, pass_signing_certificate_path, ENV["CERT_PASSWORD"], wwdr_certificate_path, pass_output_path)
     pass_signer.sign_pass!
 
     # Send the pass file
@@ -471,7 +471,7 @@ class PassServer < Sinatra::Base
   end
 
   def push_update_for_pass(pass_id)
-    APNS.certificate_password = settings.certificate_password
+    APNS.certificate_password = ENV["CERT_PASSWORD"]
     APNS.instance.open_connection("production")
     puts "Opening connection to APNS."
 
