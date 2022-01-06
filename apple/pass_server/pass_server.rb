@@ -223,16 +223,20 @@ class PassServer < Sinatra::Base
     erb :'index.html'
   end
 
-  # List of users
   get "/users" do
-    ordered_users = self.users.order(:name).all
-    if request.accept.include? "application/json"
-      content_type 'application/json', :charset => 'utf-8'
-      ordered_users.to_json
-    else
-      erb :'users/index.html', :locals => { :users => ordered_users }
-    end
+    erb :'index.html', :locals => { :users => ordered_users }
   end
+
+  # List of users
+  #get "/users" do
+    #ordered_users = self.users.order(:name).all
+    #if request.accept.include? "application/json"
+      #content_type 'application/json', :charset => 'utf-8'
+      #ordered_users.to_json
+    #else
+      #erb :'users/index.html', :locals => { :users => ordered_users }
+    #end
+  #end
 
   get "/users/new" do
     erb :'users/new.html'
